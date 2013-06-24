@@ -1,0 +1,23 @@
+{
+  "name": "astannotate",
+  "description": "JavaScript AST annotation helpers",
+  "author": "Quinn Slack <sqs@sourcegraph.com>",
+  "version": "0.0.1",
+  "main": "astannotate",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sourcegraph/astannotate.js.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "acorn": "0.3.1",
+    "walkall": "0.0.2"
+  },
+  "devDependencies": {
+    "mocha": "1.10.0",
+    "should": "~1.2.2"
+  }
+}
