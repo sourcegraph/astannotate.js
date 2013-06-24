@@ -1,8 +1,49 @@
 ast-annotate.js
 ===============
 
-ast-annotate is a node.js package that supports querying a JavaScript AST annotated with comments.
-It is useful for testing libraries that perform JavaScript source introspection.
+ast-annotate is a node.js package that supports querying a JavaScript AST
+annotated with comments. It is useful for testing libraries that perform
+JavaScript source introspection because it lets you define test expectations
+inline in source code instead of having to put them in separate test files.
+
+For example, suppose we want to test a function `findDecl` that determines the
+definition location of any JavaScript identifier in source code. You can use
+astannotate.js to help you test this function by first writing JavaScript code
+interspersed with comments as follows:
+
+```javascript
+var /*DECL*/a = 8/*DECL:a*/;
+var x = a/*REF:a*/ + 8;
+```
+
+And then defining AST annotation visitors:
+
+```javascript
+var astannotate = require('astannotate');
+var decls = {};
+var declVisitor = astannotate.rangeVisitor('DECL', null, function(range, name) {
+  decls[name] = range;
+});
+var refVisitor = astannotate.nodeVisitor('REF', 'Identifier', function(identNode, declName) {
+  // call our findDecl function on the Identifier node
+  var decl = findDecl(identNode);
+  if (decl.name !== declName) {
+    throw new Error('Expected Identifier at ' + identNode.start + '-' + identNode.end +
+                    ' to refer to decl ' + declName + ', but findDecl gave ' + decl.name);
+  }
+});
+```
+
+Then we can run this simple test case as follows, and it will throw an error if
+the output of findDecl doesn't match the expectations we've defined in the
+source code annotations.
+
+```javascript
+astannotate.multi([declVisitor, refVisitor])(
+  'var /*DECL*/a = 8/*DECL:a*/;' +
+  'var x = a/*REF:a*/ + 8;'
+);
+```
 
 
 Usage
