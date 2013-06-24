@@ -16,7 +16,7 @@ var /*DECL*/a = 8/*DECL:a*/;
 var x = a/*REF:a*/ + 8;
 ```
 
-And then defining AST annotation visitors:
+And then define AST annotation visitors:
 
 ```javascript
 var astannotate = require('astannotate');
