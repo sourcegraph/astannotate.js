@@ -1,7 +1,7 @@
-ast-annotate.js
-===============
+astannotate
+===========
 
-ast-annotate is a node.js package that supports querying a JavaScript AST
+astannotate is a node.js package that supports querying a JavaScript AST
 annotated with comments. It is useful for testing libraries that perform
 JavaScript source introspection because it lets you define test expectations
 inline in source code instead of having to put them in separate test files.
