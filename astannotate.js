@@ -34,3 +34,13 @@ exports.rangeVisitor = function(directive, test, c) {
     }
   };
 };
+
+// multi composes multiple node/range visitors into a single visitor function.
+exports.multi = function(visitors) {
+  return function(src, ast) {
+    if (!ast) ast = acorn.parse(src);
+    for (var i = 0; i < visitors.length; ++i) {
+      visitors[i](src, ast);
+    }
+  };
+};

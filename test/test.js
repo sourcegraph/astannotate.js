@@ -61,3 +61,19 @@ describe('AST range annotations', function() {
     })('var /*##*/a/*##:A*/;');
   });
 });
+
+describe('multiple visitors', function() {
+  var types = ['Identifier', 'VariableDeclaration', 'Literal'], xs = ['A', 'B', 'C'], i = 0;
+  astannotate.multi([
+    astannotate.rangeVisitor('##', null, function(range, x) {
+      x.should.eql(xs[i]);
+      range.node.type.should.eql(types[i]);
+      i++;
+    }),
+    astannotate.nodeVisitor('#', null, function(node, x) {
+      x.should.eql(xs[i]);
+      node.type.should.eql(types[i]);
+      i++;
+    }),
+  ])('var /*##*/a/*##:A*//*#:B*/;3/*#:C*/;');
+});
