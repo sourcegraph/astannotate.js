@@ -115,3 +115,5 @@ Contributors
 ============
 
 * Quinn Slack <sqs@sourcegraph.com>
+
+Inspired by the [tests in marijnh/tern](https://github.com/marijnh/tern/blob/fb2bb83134c1a1dec46459da7d22189974ea1ec5/test/cases/builtins.js).
