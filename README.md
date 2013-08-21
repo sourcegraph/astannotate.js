@@ -45,7 +45,7 @@ astannotate.multi([declVisitor, refVisitor])(
 );
 ```
 
-Documentation: [astannotate.js on Sourcegraph](https://sourcegraph.com/repos/github.com/sourcegraph/astannotate.js)
+Documentation: [astannotate.js on Sourcegraph](https://sourcegraph.com/github.com/sourcegraph/astannotate.js)
 
 Usage
 =====
