@@ -1,6 +1,11 @@
 astannotate
 ===========
 
+[![xrefs](https://sourcegraph.com/api/repos/github.com/sourcegraph/astannotate.js/badges/xrefs.png)](https://sourcegraph.com/github.com/sourcegraph/astannotate.js)
+[![funcs](https://sourcegraph.com/api/repos/github.com/sourcegraph/astannotate.js/badges/funcs.png)](https://sourcegraph.com/github.com/sourcegraph/astannotate.js)
+[![top func](https://sourcegraph.com/api/repos/github.com/sourcegraph/astannotate.js/badges/top-func.png)](https://sourcegraph.com/github.com/sourcegraph/astannotate.js)
+[![library users](https://sourcegraph.com/api/repos/github.com/sourcegraph/astannotate.js/badges/library-users.png)](https://sourcegraph.com/github.com/sourcegraph/astannotate.js)
+
 astannotate is a node.js package that supports querying a JavaScript AST
 annotated with comments. It is useful for testing libraries that perform
 JavaScript source introspection because it lets you define test expectations
