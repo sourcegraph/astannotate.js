@@ -2,7 +2,7 @@
   "name": "astannotate",
   "description": "JavaScript AST annotation helpers",
   "author": "Quinn Slack <sqs@sourcegraph.com>",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "astannotate",
   "readmeFilename": "README.md",
   "repository": {
