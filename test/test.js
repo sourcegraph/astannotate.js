@@ -4,13 +4,13 @@ var acorn = require('acorn'), should = require('should');
 describe('AST node annotations', function() {
   it('calls the registered callback function', function(done) {
     astannotate.nodeVisitor('#', null, function(node, x) {
-      node.type.should.eql('VariableDeclaration');
+      node.type.should.eql('VariableDeclarator');
       x.should.eql('A');
       done();
     })('var a/*#:A*/;');
   });
   it('triggers on multiple instances', function(done) {
-    var xs = ['A', 'B'], types = ['VariableDeclaration', 'CallExpression'], i = 0;
+    var xs = ['A', 'B'], types = ['VariableDeclarator', 'CallExpression'], i = 0;
     astannotate.nodeVisitor('#', null, function(node, x) {
       node.type.should.eql(types[i]);
       x.should.eql(xs[i]);
@@ -63,7 +63,7 @@ describe('AST range annotations', function() {
 });
 
 describe('multiple visitors', function() {
-  var types = ['Identifier', 'VariableDeclaration', 'Literal'], xs = ['A', 'B', 'C'], i = 0;
+  var types = ['Identifier', 'VariableDeclarator', 'Literal'], xs = ['A', 'B', 'C'], i = 0;
   astannotate.multi([
     astannotate.rangeVisitor('##', null, function(range, x) {
       x.should.eql(xs[i]);
